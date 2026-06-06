@@ -24,7 +24,7 @@ const ratelimiter = async (req, res, next) => {
   } catch (error) {
     // This will still catch errors if they occur in production
     console.log("Rate limit error", error);
-    next(error);
+    next(); // Fail-open: allow request to proceed if rate limiter service is down
   }
 };
 
